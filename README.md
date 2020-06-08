@@ -45,7 +45,7 @@ https://
 
 
 ## Авторизация
-https://api.abomic.com/auth/login/?login=XXX&password=XXX
+https://api.abomic.com/auth-login.php?login=XXX&password=XXX
 
 - Важно - password передавать в md5! Перед тем как отправлять пароль - заверните его в md5 один раз.
 - Вернет token, который нужен будет дальше для авторизации.
@@ -65,16 +65,10 @@ https://api.abomic.com/auth/login/?login=XXX&password=XXX
 - marketid - неверный номер маркета или он недоступен вам
 
 ## Деавторизация (выход)
-https://api.abomic.com/auth/logout/?token=xxx
-
-## авторизация через google firebase
-https://api.abomic.com/auth/login/firebase/?idtoken=xxx&deviceuuid=xxx
-
-Метод регистрирует и авторизирует клиента сразу - вызывать login не нужно.
-После успешной авторизации вернется карточка пользователя. Если там параметр phone будет пустой - это значит, что у юзера нет номера телефона и его нужно запросить.
+https://api.abomic.com/auth-logout.php?token=xxx
 
 ## регистрация нового юзера
-https://api.abomic.com/auth/register/?name=xxx&email=xxx&phone=xxx&password=xxx
+https://api.abomic.com/auth-register.php?name=xxx&email=xxx&phone=xxx&password=xxx
 
 Важно: если метод вернет success - то это не значит, что юзер авторизирован. Для авторизации вызывай login и получай token.
 
@@ -91,8 +85,8 @@ https://api.abomic.com/auth/register/?name=xxx&email=xxx&phone=xxx&password=xxx
 
 
 
-## Найти маркет или получить основные маркеты
-https://api.abomic.com/market/list/
+## Получить маркеты (категории)
+https://api.abomic.com/market-list.php
 
 метод работает как без авторизации, так и с авторизацией.
 Если с авторизацией - то в ответе будут поля watch (true/false).
@@ -104,19 +98,19 @@ https://api.abomic.com/market/list/
 
 
 ## Получить конкретный маркет
-https://api.abomic.com/market/get/?marketid=xxx
+https://api.abomic.com/market-get.php?marketid=xxx
 
 Возвращает информацию о рынке и список последних customer-ов (лидов) на рынке.
 Есть параметры пагинации: page & limit (default = 50)
 
 ## получить конкретного customer'a с рынка
-https://api.abomic.com/market/customer/get/?customerid=xxx
+https://api.abomic.com/market-customer-get.php?customerid=xxx
 
 Авторизация не требуется. Но если авторизация была передана и пользователь уже открывал этого customer'a - ему покажутся контакты.
 Иначе, контакты будут закрыты звездочками.
 
 ## создать customer'a на рынке (создать заявку)
-https://api.abomic.com/market/customer/add/
+https://api.abomic.com/market-customer-add.php
 
 Требуется авторизация.
 
@@ -145,7 +139,7 @@ https://api.abomic.com/market/customer/add/
 
 
 ## открыть заданного customer'a и получить его контакты
-https://api.abomic.com/market/customer/open/?customerid=xxx
+https://api.abomic.com/market-customer-open.php?customerid=xxx
 
 Требуется авторизация.
 Под открыть понимается "получить контакты" (и возможно забрать с рынка).
@@ -161,14 +155,14 @@ https://api.abomic.com/market/customer/open/?customerid=xxx
 
 
 ## получить данные моего профиля и купленные тарифы
-https://api.abomic.com/user/profile/
+https://api.abomic.com/user-profile.php
 
 Требуется авторизация.
 Без параметров.
 
 
 ## получить все мои контакты
-https://api.abomic.com/user/myleads/
+https://api.abomic.com/user-myleads.php
 
 Метод возвращает единый массив объектов customer/provider с которыми у вас установлена связь (котоые вы открыли).
 Требуется авторизация.
