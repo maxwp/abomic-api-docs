@@ -32,6 +32,7 @@ https://
 - name - string - имя человека или название компании
 - email - string - почта
 - phone - string - телефон
+- messenger - string - ссылка на мессенджер
 - description - string - описание customer'a (что ему надо) или provider'a (что он предлагает)
 - descriptionsecret - string - секретное описание, которое открывается после покупки
 - location - string - локация customer'a где он предоставляет услуги
@@ -118,22 +119,23 @@ https://api.abomic.com/market-customer-add.php
 
 - marketid (обязательно)
 - name (обязательно)
-- email (обязательно phone OR email)
-- phone (обязательно phone OR email)
+- email (обязательно phone OR email OR messenger)
+- phone (обязательно phone OR email  OR messenger)
+- messenger (обязательно phone OR email  OR messenger)
 - description (обязательно, хотя-бы 1 символ)
 - location (не обязательно)
 
 Метод вернет все поля customer'a. Структура ответа аналогична методу market/customer/get/
 В том числе будет возвращен customerid.
 
-Есть нюанс - проверка email OR phone. Иными словами, достаточно передать хотя-бы что-то одно.
+Есть нюанс - проверка email OR phone OR messenger. Иными словами, достаточно передать хотя-бы что-то одно из контактов юзера.
 
 Коды ошибок:
 
 - invalid-name
 - invalid-email
 - invalid-phone
-- need-email-or-phone
+- need-email-or-phone-or-messenger
 - invalid-description
 - invalid-marketid
 
